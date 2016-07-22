@@ -25,4 +25,10 @@ public class SpringRedisTestCase {
         System.out.println(redisTemplate.opsForValue().get("china"));
     }
 
+
+    @Test
+    public void testIncr(){
+        redisTemplate.opsForValue().increment("money:4",4.5);
+        System.out.println(redisTemplate.opsForValue().get("money:4"));
+    }
 }
