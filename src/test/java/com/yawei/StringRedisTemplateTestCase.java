@@ -1,5 +1,7 @@
 package com.yawei;
 
+import com.google.gson.Gson;
+import com.yaweipojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,8 +38,23 @@ public class StringRedisTemplateTestCase {
         }
     }
 
-   /* @Test
+    @Test
     public void testSaveHash(){
-        stringRedisTemplate.opsForHash().put("user:4");
-    }*/
+        //stringRedisTemplate.opsForHash().put("user:4","name","yawei");
+        Map<String,String> map = new HashMap<>();
+        map.put("name","wanglei");
+        map.put("address","zhengzhou");
+        stringRedisTemplate.opsForHash().putAll("user:4",map);
+    }
+    @Test
+    public void testSave(){
+        User user = new User(3,"wangshi","china");
+        stringRedisTemplate.opsForValue().set("user:5",new Gson().toJson(user));
+    }
+    @Test
+    public void testGetUser(){
+        String json = stringRedisTemplate.opsForValue().get("user:5");
+        User user = new Gson().fromJson(json,User.class);
+        System.out.println(user);
+    }
 }
