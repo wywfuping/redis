@@ -1,6 +1,6 @@
 package com.yawei;
 
-import com.yaweipojo.User;
+import com.yawei.pojo.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
 package com.yawei;
 
 import com.google.gson.Gson;
-import com.yaweipojo.User;
+import com.yawei.pojo.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

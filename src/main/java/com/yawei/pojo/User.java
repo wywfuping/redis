@@ -1,4 +1,4 @@
-package com.yaweipojo;
+package com.yawei.pojo;
 
 public class User {
 
